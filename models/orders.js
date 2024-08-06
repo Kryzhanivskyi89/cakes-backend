@@ -10,12 +10,10 @@ const orderSchema = new Schema(
       type: String,
       required: [true, 'Set phone of client'],
     },
-    
     description: {
       type: String,
       required: [true, 'Descript your order'],
     },
-    
   },
   { versionKey: false, timestamps: true }
 );

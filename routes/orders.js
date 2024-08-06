@@ -1,3 +1,13 @@
+
+
+const express = require('express');
+const router = express.Router();
+const addOrder = require('../controlers/orders/addOrder');
+
+router.post('/', addOrder);
+
+module.exports = router; // Експорт маршруту
+
 // const express = require('express');
 
 // const ordersRouter = express.Router();

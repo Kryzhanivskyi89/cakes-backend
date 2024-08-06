@@ -1,12 +1,11 @@
-const { OrdersService } = require("../../services/orders");
+const Order = require('../../models/orders');
 
 const addOrder = async (req, res) => {
   try {
-    const orderData = { ...req.body };
-    const newOrder = await OrdersService.addOrder(orderData);
+    const newOrder = await Order.create(req.body);
     res.status(201).json(newOrder);
   } catch (error) {
-    res.status(500).json({ message: error.message || "Failed to create order" });
+    res.status(500).json({ message: error.message || 'Failed to create order' });
   }
 };
 
