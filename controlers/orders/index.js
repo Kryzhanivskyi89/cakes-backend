@@ -1,6 +1,8 @@
-// const { ctrlWrapper } = require("../../helpers");
-// const addOrder = require("./addOrder")
+const { ctrlWrapper } = require("../../helpers");
 
-// module.exports = {
-//   addOrder: ctrlWrapper(addOrder),
-// };
+const addOrder = require("./addOrder");
+
+module.exports = {
+  addOrder: ctrlWrapper(addOrder),
+  
+};
