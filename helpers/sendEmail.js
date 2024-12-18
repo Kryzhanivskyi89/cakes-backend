@@ -13,36 +13,34 @@ const nodemailerConfig = {
 
 const transporter = nodemailer.createTransport(nodemailerConfig);
 
-// Функція для надсилання електронної пошти
 const sendEmail = (order) => {
   const mailOptions = {
     from: GMAIL_EMAIL,
     to: 'ecolog.506@gmail.com',
-    subject: 'New Order Received',
-    text: `A new order has been received: ${order.description}`,
+    subject: 'Нове замовлення',
+    text: `Отримано нове замовлення від: ${order.name}
+    Номер телефону: ${order.phone}
+    Опис: ${order.description}
+    Деталі: ${JSON.stringify(order, null, 2)}`,
   };
+
 
   return new Promise((resolve, reject) => {
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
-        console.log('Error sending email:', error);
+        console.error('Помилка надсилання листа:', {
+          errorMessage: error.message,
+          errorStack: error.stack,
+          order: order
+        });
         return reject(error);
       } else {
-        console.log('Email sent: ' + info.response);
+        console.log('Лист успішно надіслано:', info.response);
         return resolve(info);
       }
     });
   });
 };
 
-
-// const sendEmail = async (data) => {
-//   const email = { ...data, from: GMAIL_EMAIL };
-//   await transporter
-//     .sendMail(email)
-//     .then(() => console.log("Email send success"))
-//     .catch((error) => console.log(error.message));
-//   return true;
-// };
 
 module.exports = sendEmail;

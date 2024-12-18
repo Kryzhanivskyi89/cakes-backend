@@ -23,11 +23,22 @@ app.use(express.json());
 
 app.use("/orders", api.ordersRouter);
 
+// app.use("/gallery", api.galleryRouter);
+
+// app.use("/galleryCategory", api.galleryCategoryRouter);
+// Маршрут для синхронізації та отримання галереї
+app.use("/gallery", api.galleryRouter);
+
+app.use("/webhook", webhookRouter);
+
+// app.use("/gallerySync", api.gallerySyncRouter);
+
 app.use((req, res) => {
   res.status(404).json({ message: "Not found" });
 });
 
 app.use((err, req, res, next) => {
+  console.error("Unhandled Error:", err); // Лог всіх помилок
   const statusCode = err.status || 500;
   res.status(statusCode);
   res.json({ code: statusCode, stack: err.stack, message: err.message });

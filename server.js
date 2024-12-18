@@ -35,6 +35,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const ordersRouter = require('./routes/orders'); // Правильний імпорт
+const galleryRouter = require('./routes/gallery');
+const galleryCategoryRouter = require('./routes/galleryCategory');
+const webhookRouter = require("./routes/webhookClaudinary");
 
 const app = express();
 
@@ -52,6 +55,13 @@ mongoose.connect(DB_HOST, {
   });
 
 app.use('/orders', ordersRouter); // Використання маршруту
+
+// app.use('/gallery', galleryRouter);
+
+// app.use('/galleryCategory', galleryCategoryRouter);
+// Маршрут для синхронізації та отримання галереї
+app.use("/gallery", galleryRouter);
+app.use("/webhook", webhookRouter);
 
 // const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
