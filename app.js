@@ -23,10 +23,6 @@ app.use(express.json());
 
 app.use("/orders", api.ordersRouter);
 
-// app.use("/gallery", api.galleryRouter);
-
-// app.use("/galleryCategory", api.galleryCategoryRouter);
-// Маршрут для синхронізації та отримання галереї
 app.use("/gallery", api.galleryRouter);
 
 app.use("/webhook", webhookRouter);

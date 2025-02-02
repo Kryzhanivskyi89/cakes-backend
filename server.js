@@ -2,39 +2,12 @@
 require('dotenv').config();
 require("colors");
 
-// const mongoose = require('mongoose');
-
 const { DB_HOST, PORT } = process.env;
-
-// mongoose.set("strictQuery", false);
-
-// const connectDB = async () => {
-//   try {
-//     const db = await mongoose.connect(DB_HOST);
-//     console.log(
-//       `Database is connected. Name:${db.connection.name}. Port:${db.connection.port}. Host:${db.connection.host}`
-//         .green.italic.bold
-//     );
-//   } catch (error) {
-//     console.log(error.message.red.bold);
-//   }
-// };
-
-// connectDB()
-//   .then(() => {
-//     app.listen(PORT, () => {
-//       console.log(`Server is running on port ${PORT}`.blue.bold);
-//     });
-//   })
-//   .catch((error) => {
-//     console.log(error.message.red.bold);
-//     process.exit(1);
-//   });
 
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const ordersRouter = require('./routes/orders'); // Правильний імпорт
+const ordersRouter = require('./routes/orders'); 
 const galleryRouter = require('./routes/gallery');
 const galleryCategoryRouter = require('./routes/galleryCategory');
 const webhookRouter = require("./routes/webhookClaudinary");
@@ -54,16 +27,10 @@ mongoose.connect(DB_HOST, {
     process.exit(1);
   });
 
-app.use('/orders', ordersRouter); // Використання маршруту
-
-// app.use('/gallery', galleryRouter);
-
-// app.use('/galleryCategory', galleryCategoryRouter);
-// Маршрут для синхронізації та отримання галереї
+app.use('/orders', ordersRouter); 
 app.use("/gallery", galleryRouter);
 app.use("/webhook", webhookRouter);
 
-// const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`.green.italic.bold);
 });
