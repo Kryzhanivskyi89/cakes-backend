@@ -7,9 +7,3 @@ module.exports = {
     syncGallery: ctrlWrapper(syncGallery),
     getCategory: ctrlWrapper(getCategory),
 };
-
-
-// module.exports = {
-//     syncGallery,
-//     getCategory,
-// };

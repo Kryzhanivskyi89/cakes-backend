@@ -6,4 +6,4 @@ const orderControllers = require('../controlers');
 
 router.post('/', orderControllers.addOrder);
 
-module.exports = router; // Експорт маршруту
+module.exports = router;

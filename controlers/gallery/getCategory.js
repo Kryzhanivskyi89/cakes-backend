@@ -1,4 +1,4 @@
-const Gallery = require("../../models/gallery"); // Модель для роботи з базою даних
+const Gallery = require("../../models/gallery");
 
 async function getCategory (req, res) {
   const { category } = req.params;

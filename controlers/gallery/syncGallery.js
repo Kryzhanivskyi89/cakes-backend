@@ -1,6 +1,5 @@
 const { fetchCloudinaryImages } = require("../../services/api");
-const Gallery = require("../../models/gallery"); // Модель для роботи з базою даних
-
+const Gallery = require("../../models/gallery"); 
 async function syncGallery (req, res) {
   const folderName = req.params.folder;
 
