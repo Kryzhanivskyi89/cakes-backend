@@ -9,7 +9,6 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const ordersRouter = require('./routes/orders'); 
 const galleryRouter = require('./routes/gallery');
-const galleryCategoryRouter = require('./routes/galleryCategory');
 const webhookRouter = require("./routes/webhookClaudinary");
 
 const app = express();
