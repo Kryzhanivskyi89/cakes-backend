@@ -1,6 +1,6 @@
 const Order = require('../../models/orders');
 
-const sendEmail = require('../..//helpers/sendEmail')
+const sendEmail = require('../../helpers/sendEmail')
 
 const sendTelegram = require('../../helpers/sendTelegram');
 
@@ -14,8 +14,9 @@ const addOrder = async (req, res) => {
       sendTelegram(newOrder),
     ]).then((results) => {
       results.forEach((result, i) => {
+        const label = i === 0 ? 'Email' : 'Telegram';
         if (result.status === 'rejected') {
-          console.error(`Сповіщення #${i} не надіслано:`, result.reason);
+          console.error(`${label} сповіщення не надіслано:`, result.reason);
         }
       });
     });
